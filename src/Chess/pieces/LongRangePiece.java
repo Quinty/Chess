@@ -1,4 +1,10 @@
 package Chess.pieces;
 
-public class LongRangePiece extends Piece{
+import Chess.Color;
+
+public abstract class LongRangePiece extends Piece{
+
+    LongRangePiece(Color color) {
+        super(color);
+    }
 }

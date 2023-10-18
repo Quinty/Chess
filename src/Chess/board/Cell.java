@@ -1,19 +1,20 @@
 package Chess.board;
 
-import Chess.pieces.Piece;
 import Chess.Color;
+import Chess.pieces.Piece;
 
 public class Cell {
     private final Color color;
     private final Coordinate coordinate;
+
     private Piece piece;
 
     @Override
     public String toString() {
         return "Cell{" +
-                "Цвет:" + color +
-                "Координаты:" + coordinate +
-                "Фигура:" + piece +
+                " Цвет: " + color +
+                " Координаты: " + coordinate +
+                " Фигура: " + piece +
                 '}';
     }
 
@@ -37,5 +38,8 @@ public class Cell {
 
     public Color getColor() {
         return color;
+    }
+    public void setPiece(Piece piece) {
+        this.piece = piece;
     }
 }

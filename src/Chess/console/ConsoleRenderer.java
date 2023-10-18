@@ -21,7 +21,7 @@ public class ConsoleRenderer {
     }
 
     public void renderBoard(Board board) {
-        for (int line = 0; line < board.getLinesCount(); line++) {
+        for (int line = board.getLinesCount() - 1; line >= 0; line--) {
             for (int row = 0; row < board.getRowsCount(); row++) {
                 Coordinate coordinate = new Coordinate(line, row);
                 System.out.print(getColorString(board, coordinate));
@@ -64,6 +64,14 @@ public class ConsoleRenderer {
     }
 
     private String getPieceIconString(Piece piece) {
-        return ConsoleIcon.KING.getIcon();
+        return switch (piece.getClass().getSimpleName()) {
+            case "Bishop" -> ConsoleIcon.BISHOP.getIcon();
+            case "King" -> ConsoleIcon.KING.getIcon();
+            case "Knight" -> ConsoleIcon.KNIGHT.getIcon();
+            case "Pawn" -> ConsoleIcon.PAWN.getIcon();
+            case "Queen" -> ConsoleIcon.QUEEN.getIcon();
+            case "Rook" -> ConsoleIcon.ROOK.getIcon();
+            default -> ConsoleIcon.EMPTY.getIcon();
+        };
     }
 }

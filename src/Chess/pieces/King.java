@@ -1,4 +1,9 @@
 package Chess.pieces;
 
-public class King {
+import Chess.Color;
+
+public class King extends Piece{
+    public King(Color color) {
+        super(color);
+    }
 }

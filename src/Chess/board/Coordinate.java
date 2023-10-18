@@ -19,9 +19,9 @@ public class Coordinate {
 
     @Override
     public String toString() {
-        return "Coordinate{" +
-                "Строка:" + line +
-                "Столбец:" + row +
+        return "{" +
+                " Строка: " + line +
+                " Столбец: " + row +
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 package Chess.board;
 
-import Chess.pieces.Piece;
+import Chess.Color;
+import Chess.pieces.*;
 
 public class Board {
 
@@ -15,7 +16,8 @@ public class Board {
     public static Board getInstance() {
         if (board == null) {
             board = new Board();
-            board.setupDefault();
+            new BoardSetter(board).setBoard();
+            new PieceSetter(board).setPieces();
         }
         return board;
     }
@@ -23,7 +25,7 @@ public class Board {
     private int getCellPosition(Coordinate coordinate) {
         int line = coordinate.getLine();
         int row = coordinate.getRow();
-        return (((linesCount - line - 1) * (rowsCount -1)) + row);
+        return ((line * rowsCount) + row);
     }
 
     public int getLinesCount() {
@@ -34,29 +36,22 @@ public class Board {
         return rowsCount;
     }
 
-    private void setupDefault() {
-        board.setCells();
-        board.setPieces();
-    }
 
-    private void setCells() {
-        for (int line = linesCount - 1; line >= 0; line--) {
-            for (int row = rowsCount - 1; row >= 0; row--) {
-                Coordinate coordinate = new Coordinate(line, row);
-                cells[getCellPosition(coordinate)] = new Cell(coordinate);
+    public void addCell(Coordinate coordinate) {
+        for (int i = 0; i < cells.length; i++) {
+            if (cells[i] == null) {
+                cells[i] = new Cell(coordinate);
+                break;
             }
         }
-        System.out.println("Клетки установлены");
-    }
-
-    private void setPiece(Piece piece, Coordinate coordinate){
-
-    }
-    private void setPieces() {
-        System.out.println("Фигуры установлены");
     }
 
     public Cell getCell(Coordinate coordinate) {
         return cells[getCellPosition(coordinate)];
     }
+    void setPiece(Piece piece, Coordinate coordinate) {
+        board.getCell(coordinate).setPiece(piece);
+    }
+
+
 }
