@@ -1,6 +1,6 @@
-package Chess.pieces;
+package ru.quinty.chess.board.pieces;
 
-import Chess.Color;
+import ru.quinty.chess.Color;
 
 //Слон
 public class Bishop extends LongRangePiece{

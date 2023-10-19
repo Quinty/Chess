@@ -1,4 +1,4 @@
-package Chess.console;
+package ru.quinty.chess.console;
 
 public enum ConsoleIcon {
     BISHOP(" ♝ "),

@@ -1,6 +1,6 @@
-package Chess.pieces;
+package ru.quinty.chess.board.pieces;
 
-import Chess.Color;
+import ru.quinty.chess.Color;
 
 public abstract class LongRangePiece extends Piece{
 

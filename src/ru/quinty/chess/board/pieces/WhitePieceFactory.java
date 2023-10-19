@@ -1,6 +1,6 @@
-package Chess.pieces;
+package ru.quinty.chess.board.pieces;
 
-import Chess.Color;
+import ru.quinty.chess.Color;
 
 public class WhitePieceFactory extends PieceFactory{
     public WhitePieceFactory() {

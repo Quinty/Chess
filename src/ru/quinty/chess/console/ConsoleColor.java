@@ -1,4 +1,4 @@
-package Chess.console;
+package ru.quinty.chess.console;
 
 public enum ConsoleColor {
     ANSI_RESET("\u001B[0m"),

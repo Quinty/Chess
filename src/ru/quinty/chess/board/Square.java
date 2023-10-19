@@ -1,9 +1,9 @@
-package Chess.board;
+package ru.quinty.chess.board;
 
-import Chess.Color;
-import Chess.pieces.Piece;
+import ru.quinty.chess.Color;
+import ru.quinty.chess.board.pieces.Piece;
 
-public class Cell {
+public class Square {
     private final Color color;
     private final Coordinate coordinate;
 
@@ -18,12 +18,12 @@ public class Cell {
                 '}';
     }
 
-    public Cell(Coordinate coordinate) {
+    public Square(Coordinate coordinate) {
         this.coordinate = coordinate;
-        this.color = Cell.defineColor(coordinate);
+        this.color = this.defineColor(coordinate);
     }
 
-    private static Color defineColor(Coordinate coordinate) {
+    private Color defineColor(Coordinate coordinate) {
         if ((coordinate.getLine() + coordinate.getRow() )% 2 == 0){
             return Color.BLACK;
         } else {

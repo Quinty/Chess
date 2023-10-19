@@ -1,7 +1,7 @@
-package Chess;
+package ru.quinty.chess;
 
-import Chess.board.Board;
-import Chess.console.ConsoleRenderer;
+import ru.quinty.chess.board.Board;
+import ru.quinty.chess.console.ConsoleRenderer;
 
 public class Main {
     public static void main(String[] args) {

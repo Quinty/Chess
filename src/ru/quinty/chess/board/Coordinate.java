@@ -1,4 +1,4 @@
-package Chess.board;
+package ru.quinty.chess.board;
 
 public class Coordinate {
     private final int line;

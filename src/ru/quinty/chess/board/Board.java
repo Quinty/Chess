@@ -1,14 +1,13 @@
-package Chess.board;
+package ru.quinty.chess.board;
 
-import Chess.Color;
-import Chess.pieces.*;
+import ru.quinty.chess.board.pieces.Piece;
 
 public class Board {
 
     private final int linesCount = 8;
     private final int rowsCount = 8;
     private static Board board;
-    private Cell[] cells = new Cell[64];
+    private Square[] squares = new Square[64];
 
     private Board() {
     }
@@ -38,16 +37,16 @@ public class Board {
 
 
     public void addCell(Coordinate coordinate) {
-        for (int i = 0; i < cells.length; i++) {
-            if (cells[i] == null) {
-                cells[i] = new Cell(coordinate);
+        for (int i = 0; i < squares.length; i++) {
+            if (squares[i] == null) {
+                squares[i] = new Square(coordinate);
                 break;
             }
         }
     }
 
-    public Cell getCell(Coordinate coordinate) {
-        return cells[getCellPosition(coordinate)];
+    public Square getCell(Coordinate coordinate) {
+        return squares[getCellPosition(coordinate)];
     }
     void setPiece(Piece piece, Coordinate coordinate) {
         board.getCell(coordinate).setPiece(piece);

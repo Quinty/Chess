@@ -1,7 +1,8 @@
-package Chess.board;
+package ru.quinty.chess.board;
 
-import Chess.Color;
-import Chess.pieces.*;
+import ru.quinty.chess.board.pieces.BlackPieceFactory;
+import ru.quinty.chess.board.pieces.PieceFactory;
+import ru.quinty.chess.board.pieces.WhitePieceFactory;
 
 public class PieceSetter {
     PieceFactory whiteFactory = new WhitePieceFactory();

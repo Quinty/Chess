@@ -1,10 +1,10 @@
-package Chess.console;
+package ru.quinty.chess.console;
 
-import Chess.board.Board;
-import Chess.board.Cell;
-import Chess.Color;
-import Chess.board.Coordinate;
-import Chess.pieces.Piece;
+import ru.quinty.chess.Color;
+import ru.quinty.chess.board.Board;
+import ru.quinty.chess.board.Coordinate;
+import ru.quinty.chess.board.pieces.Piece;
+import ru.quinty.chess.board.Square;
 
 public class ConsoleRenderer {
     private static ConsoleRenderer consoleRenderer;
@@ -31,12 +31,12 @@ public class ConsoleRenderer {
     }
 
     private String getColorString(Board board, Coordinate coordinate) {
-        Cell cell = board.getCell(coordinate);
-        return getCellRenderString(cell) + getPieceRenderString(cell);
+        Square square = board.getCell(coordinate);
+        return getCellRenderString(square) + getPieceRenderString(square);
     }
 
-    private String getCellRenderString(Cell cell) {
-        Color color = cell.getColor();
+    private String getCellRenderString(Square square) {
+        Color color = square.getColor();
         if (color == Color.WHITE) {
             return ConsoleColor.ANSI_WHITE_SQUARE_BACKGROUND.getColor();
         } else {
@@ -44,8 +44,8 @@ public class ConsoleRenderer {
         }
     }
 
-    private String getPieceRenderString(Cell cell) {
-        Piece piece = cell.getPiece();
+    private String getPieceRenderString(Square square) {
+        Piece piece = square.getPiece();
         if (piece == null) {
             return ConsoleIcon.EMPTY.getIcon();
         } else {
