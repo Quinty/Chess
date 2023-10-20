@@ -4,10 +4,10 @@ import ru.quinty.chess.board.pieces.Piece;
 
 public class Board {
 
-    private final int linesCount = 8;
-    private final int rowsCount = 8;
+    private final int rankCount = 8;
+    private final int columnCount = 8;
     private static Board board;
-    private Square[] squares = new Square[64];
+    private Square[][] squares = new Square[rankCount][columnCount];
 
     private Board() {
     }
@@ -21,35 +21,24 @@ public class Board {
         return board;
     }
 
-    private int getCellPosition(Coordinate coordinate) {
-        int line = coordinate.getLine();
-        int row = coordinate.getRow();
-        return ((line * rowsCount) + row);
+    public int getRankCount() {
+        return rankCount;
     }
 
-    public int getLinesCount() {
-        return linesCount;
+    public int getColumnCount() {
+        return columnCount;
     }
 
-    public int getRowsCount() {
-        return rowsCount;
+    public Square getSquare(int rank, int column) {
+        return squares[rank][column];
     }
 
-
-    public void addCell(Coordinate coordinate) {
-        for (int i = 0; i < squares.length; i++) {
-            if (squares[i] == null) {
-                squares[i] = new Square(coordinate);
-                break;
-            }
-        }
+    public void setSquare(int rank, int column) {
+        squares[rank][column] = new Square(rank, column);
     }
 
-    public Square getCell(Coordinate coordinate) {
-        return squares[getCellPosition(coordinate)];
-    }
-    void setPiece(Piece piece, Coordinate coordinate) {
-        board.getCell(coordinate).setPiece(piece);
+    void setPieceOnCoordinate(Piece piece, int rank, int column) {
+        getSquare(rank, column).setPiece(piece);
     }
 
 

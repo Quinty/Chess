@@ -2,9 +2,9 @@ package ru.quinty.chess.board.pieces;
 
 import ru.quinty.chess.Color;
 
-public abstract class LongRangePiece extends Piece{
+public abstract class LongRange extends Piece{
 
-    LongRangePiece(Color color) {
+    LongRange(Color color) {
         super(color);
     }
 }

@@ -8,13 +8,9 @@ public class BoardSetter {
     }
 
     public void setBoard() {
-        setCells();
-    }
-
-    private void setCells() {
-        for (int line = board.getLinesCount() - 1; line >= 0; line--) {
-            for (int row = board.getRowsCount() - 1; row >= 0; row--) {
-                board.addCell(new Coordinate(line, row));
+        for (int rank = board.getRankCount() - 1; rank >= 0; rank--) {
+            for (int column = board.getColumnCount() - 1; column >= 0; column--) {
+                board.setSquare(rank, column);
             }
         }
         System.out.println("Клетки установлены");

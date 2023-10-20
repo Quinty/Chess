@@ -2,9 +2,8 @@ package ru.quinty.chess.console;
 
 import ru.quinty.chess.Color;
 import ru.quinty.chess.board.Board;
-import ru.quinty.chess.board.Coordinate;
-import ru.quinty.chess.board.pieces.Piece;
 import ru.quinty.chess.board.Square;
+import ru.quinty.chess.board.pieces.Piece;
 
 public class ConsoleRenderer {
     private static ConsoleRenderer consoleRenderer;
@@ -21,21 +20,28 @@ public class ConsoleRenderer {
     }
 
     public void renderBoard(Board board) {
-        for (int line = board.getLinesCount() - 1; line >= 0; line--) {
-            for (int row = 0; row < board.getRowsCount(); row++) {
-                Coordinate coordinate = new Coordinate(line, row);
-                System.out.print(getColorString(board, coordinate));
+        printColumnLetters();
+        for (int rank = board.getRankCount() - 1; rank >= 0; rank--) {
+            System.out.print(' ' + Integer.toString(rank + 1) + ' ');
+            for (int column = 0; column < board.getColumnCount(); column++) {
+                System.out.print(getSquareString(board, rank, column));
             }
-            System.out.println(ConsoleColor.ANSI_RESET.getColor());
+            System.out.print(ConsoleColor.ANSI_RESET.getColor());
+            System.out.println(' ' + Integer.toString(rank + 1)  + ' ');
         }
+        printColumnLetters();
+    }
+    
+    private void printColumnLetters(){
+        System.out.println("    A  B  C  D  F  E  G  H ");
     }
 
-    private String getColorString(Board board, Coordinate coordinate) {
-        Square square = board.getCell(coordinate);
-        return getCellRenderString(square) + getPieceRenderString(square);
+    private String getSquareString(Board board, int rank, int column) {
+        Square square = board.getSquare(rank, column);
+        return getBackgroundRenderString(square) + getPieceRenderString(square);
     }
 
-    private String getCellRenderString(Square square) {
+    private String getBackgroundRenderString(Square square) {
         Color color = square.getColor();
         if (color == Color.WHITE) {
             return ConsoleColor.ANSI_WHITE_SQUARE_BACKGROUND.getColor();
@@ -64,13 +70,13 @@ public class ConsoleRenderer {
     }
 
     private String getPieceIconString(Piece piece) {
-        return switch (piece.getClass().getSimpleName()) {
-            case "Bishop" -> ConsoleIcon.BISHOP.getIcon();
-            case "King" -> ConsoleIcon.KING.getIcon();
-            case "Knight" -> ConsoleIcon.KNIGHT.getIcon();
-            case "Pawn" -> ConsoleIcon.PAWN.getIcon();
-            case "Queen" -> ConsoleIcon.QUEEN.getIcon();
-            case "Rook" -> ConsoleIcon.ROOK.getIcon();
+        return switch (piece.getType()) {
+            case BISHOP -> ConsoleIcon.BISHOP.getIcon();
+            case KING -> ConsoleIcon.KING.getIcon();
+            case KNIGHT -> ConsoleIcon.KNIGHT.getIcon();
+            case PAWN -> ConsoleIcon.PAWN.getIcon();
+            case QUEEN -> ConsoleIcon.QUEEN.getIcon();
+            case ROOK -> ConsoleIcon.ROOK.getIcon();
             default -> ConsoleIcon.EMPTY.getIcon();
         };
     }

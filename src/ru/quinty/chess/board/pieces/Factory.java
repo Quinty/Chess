@@ -2,7 +2,7 @@ package ru.quinty.chess.board.pieces;
 
 import ru.quinty.chess.Color;
 
-public abstract class PieceFactory {
+public class Factory {
     Color color;
 
     public Piece createBishop() {

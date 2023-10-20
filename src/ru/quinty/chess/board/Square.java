@@ -5,7 +5,8 @@ import ru.quinty.chess.board.pieces.Piece;
 
 public class Square {
     private final Color color;
-    private final Coordinate coordinate;
+    private final int rank;//горизонт
+    private final int column;//вертикаль
 
     private Piece piece;
 
@@ -13,18 +14,18 @@ public class Square {
     public String toString() {
         return "Cell{" +
                 " Цвет: " + color +
-                " Координаты: " + coordinate +
                 " Фигура: " + piece +
                 '}';
     }
 
-    public Square(Coordinate coordinate) {
-        this.coordinate = coordinate;
-        this.color = this.defineColor(coordinate);
+    public Square(int rank, int column) {
+        this.rank = rank;
+        this.column = column;
+        this.color = this.defineColor(rank, column);
     }
 
-    private Color defineColor(Coordinate coordinate) {
-        if ((coordinate.getLine() + coordinate.getRow() )% 2 == 0){
+    private Color defineColor(int rank, int column) {
+        if ((rank + column) % 2 == 0) {
             return Color.BLACK;
         } else {
             return Color.WHITE;
@@ -39,6 +40,7 @@ public class Square {
     public Color getColor() {
         return color;
     }
+
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
